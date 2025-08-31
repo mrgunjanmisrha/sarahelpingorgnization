@@ -552,7 +552,11 @@ nav ul li a:hover::after {
 }
 
 /* Team Members Section */
-
+.team-members {
+    padding: 60px 0;
+    background-color: white;
+    overflow: hidden;
+}
 
 .team-slider {
     display: flex;
@@ -560,7 +564,6 @@ nav ul li a:hover::after {
     padding: 20px 0;
     animation: scroll 30s linear infinite;
 }
-.team-slider { display: flex; gap: 30px; padding: 20px 0; animation: scroll 30s linear infinite; }
 
 @keyframes scroll {
     0% { transform: translateX(0); }
@@ -813,8 +816,8 @@ footer {
     right: 30px;
     background-color: #25D366;
     color: white;
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -911,11 +914,8 @@ footer {
     }
 
     .social-links a {
-        width: 25px;
-        height: 25px;
-        font-size: 0.35rem;
-    }
-    .shortnotes{
-        color: red;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
     }
 }
