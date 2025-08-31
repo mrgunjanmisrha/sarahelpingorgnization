@@ -554,6 +554,7 @@ nav ul li a:hover::after {
 /* Team Members Section */
 .team-members {
     padding: 60px 0;
+    width: 100%;
     background-color: white;
     overflow: hidden;
 }
