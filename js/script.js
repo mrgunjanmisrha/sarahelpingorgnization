@@ -67,6 +67,49 @@ function checkVisibility() {
         }
     }
 }
+document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.team-slider');
+            const prevBtn = document.querySelector('.slider-nav.prev');
+            const nextBtn = document.querySelector('.slider-nav.next');
+            const cards = document.querySelectorAll('.team-card');
+            const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(slider).gap);
+            
+            // Pause animation on hover
+            slider.addEventListener('mouseenter', () => {
+                slider.style.animationPlayState = 'paused';
+            });
+            
+            slider.addEventListener('mouseleave', () => {
+                slider.style.animationPlayState = 'running';
+            });
+            
+            // Manual navigation
+            let isManualScroll = false;
+            
+            prevBtn.addEventListener('click', () => {
+                isManualScroll = true;
+                slider.style.animation = 'none';
+                slider.style.transform = `translateX(${parseInt(slider.style.transform?.replace('translateX(', '')?.replace('px)', '') || 0) + cardWidth * 3}px)`;
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                isManualScroll = true;
+                slider.style.animation = 'none';
+                slider.style.transform = `translateX(${parseInt(slider.style.transform?.replace('translateX(', '')?.replace('px)', '') || 0) - cardWidth * 3}px)`;
+            });
+            
+            // Reset to auto-scroll after manual intervention times out
+            setInterval(() => {
+                if (isManualScroll) {
+                    isManualScroll = false;
+                    slider.style.animation = 'scroll 30s linear infinite';
+                    // Reset position to prevent overflow issues
+                    if (parseInt(slider.style.transform?.replace('translateX(', '')?.replace('px)', '') || 0) < -cardWidth * 9) {
+                        slider.style.transform = 'translateX(0)';
+                    }
+                }
+            }, 5000);
+        });
 
 
 window.addEventListener('scroll', checkVisibility);
