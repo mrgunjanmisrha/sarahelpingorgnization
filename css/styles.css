@@ -588,6 +588,7 @@ nav ul li a:hover::after {
       font-weight:600;
       color:var(--muted);
     }
+    
 
     /* Responsive: stack on smaller screens */
     @media (max-width: 800px){
